@@ -4,27 +4,9 @@ class PhotosController < ApplicationController
     
     def index
         @photos = Photo.all.order("created_at DESC")
-        # render json: @photos, status: :ok
     end
     def create
         @photo = Photo.create!(photo_params)
-        # @photo = Photo.new(photo_params)
-        # puts "desc"
-        # puts @photo.desc
-        # p @photo.url.blank?
-        # if @photo.url.blank? 
-            # openAIClient = OpenAI::Client.new
-            # response = openAIClient.images.generate(
-            #     parameters: { 
-            #         prompt: @photo.desc, 
-            #         size: "256x256" 
-            #     })
-            # puts response.dig("data", 0, "url")
-            # puts "OPEN AI"
-        #   end
-        # @photo.link=response.dig("data", 0, "url")
-        #   @photo.save
-         
     end
 
     def update

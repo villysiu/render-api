@@ -4,8 +4,8 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    @user = resource 
-    render json: @user.id
+    
+    render json: resource.id
   end
  
 

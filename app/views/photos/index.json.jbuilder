@@ -5,7 +5,7 @@ json.array! @photos do |photo|
     #json.url Rails.application.routes.url_helpers.rails_blob_path(photo.url, only_path: true) if photo.url.attached?
     json.desc photo.desc
     json.owner_id photo.user.id
-    json.owner_name photo.user.name
+    
     json.created_at photo.created_at.to_i
     json.likes photo.likes do |like|
         json.id like.id

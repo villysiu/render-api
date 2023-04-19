@@ -1,8 +1,8 @@
 json.array! @photos do |photo|
 
     json.id photo.id
-    json.url photo.url
-    #json.url Rails.application.routes.url_helpers.rails_blob_path(photo.url, only_path: true) if photo.url.attached?
+    #json.url photo.url
+    json.url Rails.application.routes.url_helpers.rails_blob_path(photo.url, only_path: true) if photo.url.attached?
     json.desc photo.desc
     json.owner_id photo.user.id
     

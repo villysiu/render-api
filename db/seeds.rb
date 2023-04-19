@@ -8,5 +8,5 @@
 User.destroy_all
 Photo.destroy_all
 u=User.create!(email:"mickey@disney.com", name:"mickey", password:'password')
-p=Photo.create!(desc: 'something', url: 'a link', user_id: u.id)
-Comment.create!(comment: "love", user_id: u.id, photo_id: p.id)
+# p=Photo.create!(desc: 'something', url: 'a link', user_id: u.id)
+# Comment.create!(comment: "love", user_id: u.id, photo_id: p.id)

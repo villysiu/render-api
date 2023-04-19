@@ -4,8 +4,6 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-  puts "DDDDDEEVEVEVNEMAKKDFSJJSKFSHFKJHJSFHJLSKFHSFJHJSKFHSKFHSKJFH"
-  puts ENV['DEVISE_JWT_SECRET_KEY']
     render json: resource.id
   end
  

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  # before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :except => [:index]
   before_action :find_photo, :only => [:create, :destroy]
   def index
 

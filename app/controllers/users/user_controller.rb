@@ -8,6 +8,7 @@ class Users::UserController < ApplicationController
 
   def curr_user
       render json: current_user.id, status: :ok
+      
     
   end
 

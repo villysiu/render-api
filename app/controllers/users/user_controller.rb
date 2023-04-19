@@ -7,9 +7,7 @@ class Users::UserController < ApplicationController
   end
 
   def curr_user
-      render json: "someone here?? "
-      # render json: current_user.id, except: [:created_at, :updated_at]
-      , status: :ok
+      render json: current_user.id, status: :ok
     
   end
 
@@ -17,9 +15,7 @@ class Users::UserController < ApplicationController
     
     current_user.update(name: params[:name]) 
     current_user.update(bio: params[:bio]) 
-    render json: current_user.id
-    # , except: [:created_at, :updated_at]
-    , status: :ok
+    render json: current_user.id, status: :ok
   end
 
   def show

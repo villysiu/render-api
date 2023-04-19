@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  # before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :except => [:index]
   before_action :find_photo, :only => [:create, :destroy]
   def index
 
@@ -23,7 +23,6 @@ class CommentsController < ApplicationController
   end
 
   def find_photo
-
       @photo=Photo.find(params[:photo_id])
   end
 

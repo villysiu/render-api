@@ -1,6 +1,5 @@
 class Users::UserController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
-  # before_action :find_current_user, :except => [:index, :show]
 
   def index
     @users=User.all
@@ -8,14 +7,10 @@ class Users::UserController < ApplicationController
 
   def curr_user
       render json: current_user.id, status: :ok
-      
-    
   end
 
   def update
-    
-    current_user.update(name: params[:name]) 
-    current_user.update(bio: params[:bio]) 
+    current_user.update(user_params)
     render json: current_user.id, status: :ok
   end
 
@@ -24,8 +19,9 @@ class Users::UserController < ApplicationController
   end
 
   private
-  def avatar_params
-    params.permit(:name, :bio )
+  
+  def user_params
+    params.permit(:name, :bio)
   end
     
 end

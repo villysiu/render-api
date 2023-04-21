@@ -1,9 +1,9 @@
 class LikesController < ApplicationController
     before_action :authenticate_user!, :except => [:index]
     before_action :find_photo
-    # before_action :find_like, :only => [:destroy]
+    
     def index
-        @likes=@photo.likes
+        # @likes=@photo.likes
     end
     def create
         @like= @photo.likes.create!(user_id: current_user.id)

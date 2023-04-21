@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
         params.permit(:user_id, :desc, :url)
     end
     def find_photo
+        puts params
         @photo=Photo.find(params[:id])
     end
     

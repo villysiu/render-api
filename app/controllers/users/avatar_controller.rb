@@ -12,7 +12,6 @@ class Users::AvatarController < ApplicationController
   end
 
   def destroy
-   
     current_user.avatar.purge
     current_user.update(avatar: nil)
     render json: current_user.id, status: :ok
@@ -20,8 +19,8 @@ class Users::AvatarController < ApplicationController
 
   private
 
-  def avatar_params
-    params.permit(:avatar )
-  end
+  # def avatar_params
+  #   params.permit(:avatar)
+  # end
     
 end

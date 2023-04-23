@@ -52,3 +52,4 @@ end
 gem 'devise'
 gem 'devise-jwt'
 
+gem 'aws-sdk-s3'

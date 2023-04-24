@@ -87,4 +87,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # config.secret_key_base = ENV["secret_key_base"]
+  config.read_encrypted_secrets = true
 end

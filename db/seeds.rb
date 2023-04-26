@@ -26,7 +26,7 @@ Photo.destroy_all
 end
 1.times do |index|
     photo=Photo.new()
-    photo.desc = Faker::Quote.matz,
+    photo.desc = Faker::TvShows::HowIMetYourMother.quote
 
     photo.user_id = rand(1..User.count)
     

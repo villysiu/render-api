@@ -25,14 +25,15 @@ Photo.destroy_all
     user.save
 end
 2.times do |index|
-    photo=Photo.new()
+    n=rand(1..User.count)
+    user=User.find(n)
+    puts n
+    puts user
+    photo=user.photos.new()
     photo.desc = Faker::TvShows::HowIMetYourMother.quote
 
-    photo.user_id = rand(1..User.count)
-    
     openAIClient = OpenAI::Client.new
-    puts photo.desc
-    puts openAIClient
+    
     response = openAIClient.images.generate(
         parameters: { 
             prompt: photo.desc, 
@@ -41,13 +42,14 @@ end
         })
     puts response
     image_url=response.dig("data", 0, "url")
-    puts image_url
     downloaded_file = URI.open(image_url)
 
     photo.url.attach(io: downloaded_file, filename: "openai_image_#{index}.png")
     puts photo.url
     photo.save!
-    puts photo.url
+    puts "is photo saved?"
+    puts photo
+    
    
 
 end

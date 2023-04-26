@@ -10,6 +10,7 @@
 User.destroy_all
 Photo.destroy_all
 # u=User.create!(email:"mickey@disney.com", name:"mickey", password:'password')
+arr=[]
 3.times do |index|
     user=User.create!(
 
@@ -23,9 +24,14 @@ Photo.destroy_all
 
     user.avatar.attach(io: downloaded_file, filename: "avatar_#{index}.png")
     user.save
+    puts user
+    puts user.id
+    arr << user.id
 end
+puts arr
 2.times do |index|
-    n=rand(1..User.count)
+    # n=rand(1..User.count)
+    n=arr.sample
     user=User.find(n)
     puts n
     puts user

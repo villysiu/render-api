@@ -53,3 +53,7 @@ gem 'devise'
 gem 'devise-jwt'
 
 gem 'aws-sdk-s3'
+
+gem 'faker'
+gem "ruby-openai"
+gem 'open-uri'

@@ -41,7 +41,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
   # 'dotenv-rails' is for storing secret key in ENV file
-  gem 'dotenv-rails'
+  # gem 'dotenv-rails'
 end
 
 group :development do

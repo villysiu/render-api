@@ -24,7 +24,7 @@ Photo.destroy_all
     user.avatar.attach(io: downloaded_file, filename: "avatar_#{index}.png")
     user.save
 end
-1.times do |index|
+2.times do |index|
     photo=Photo.new()
     photo.desc = Faker::TvShows::HowIMetYourMother.quote
 
@@ -47,6 +47,7 @@ end
     photo.url.attach(io: downloaded_file, filename: "openai_image_#{index}.png")
     puts photo.url
     photo.save!
+    puts photo.url
    
 
 end

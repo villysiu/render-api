@@ -31,6 +31,7 @@ end
     photo.user_id = rand(1..User.count)
     
     openAIClient = OpenAI::Client.new
+    puts photo.desc
     puts openAIClient
     response = openAIClient.images.generate(
         parameters: { 
@@ -44,7 +45,8 @@ end
     downloaded_file = URI.open(image_url)
 
     photo.url.attach(io: downloaded_file, filename: "openai_image_#{index}.png")
-    photo.save
+    puts photo.url
+    photo.save!
    
 
 end

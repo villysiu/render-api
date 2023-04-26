@@ -26,20 +26,21 @@ Photo.destroy_all
 end
 1.times do |index|
     photo=Photo.new()
-    photo.desc = Faker::Quote.fortune_cookie,
+    photo.desc = Faker::Quote.matz,
+
     photo.user_id = rand(1..User.count)
     
     openAIClient = OpenAI::Client.new
-    
+    puts openAIClient
     response = openAIClient.images.generate(
         parameters: { 
             prompt: photo.desc, 
             # prompt: "whale in a hat and pink gloves",
             size: "512x512" 
         })
-   
+    puts response
     image_url=response.dig("data", 0, "url")
-   
+    puts image_url
     downloaded_file = URI.open(image_url)
 
     photo.url.attach(io: downloaded_file, filename: "openai_image_#{index}.png")

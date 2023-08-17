@@ -5,6 +5,7 @@ class Users::AvatarController < ApplicationController
   end
 
   def update
+    puts params
     current_user.update(avatar: params[:avatar]) 
     avatar_path=rails_blob_path(current_user.avatar, only_path: true) if current_user.avatar.attached?
    
@@ -14,7 +15,7 @@ class Users::AvatarController < ApplicationController
   def destroy
     current_user.avatar.purge
     current_user.update(avatar: nil)
-    render json: current_user.id, status: :ok
+    render json: {id: current_user.id}, status: :ok
   end
 
   private

@@ -1,25 +1,29 @@
 class LikesController < ApplicationController
     before_action :authenticate_user!, :except => [:index]
-    before_action :find_photo
+    before_action :find_comment
     
     def index
         # @likes=@photo.likes
     end
     def create
-        @like= @photo.likes.create!(user_id: current_user.id)
-        render json: {id: @like.id, user_id: @like.user_id}, status: :ok
+        @like= @comment.likes.create!(user_id: current_user.id)
+        # render nil, status: :ok
+        render json: {user_id: current_user.id, user_name: current_user.name}, status: :ok
     end
 
     def destroy
-        @like=@photo.likes.find_by(user_id: current_user.id)
+        @like=@comment.likes.find_by(user_id: current_user.id)
         @like.destroy
-        render json: @like.id, status: :ok
+        render json: {user_id: current_user.id}, status: :ok
     end
 
     private
 
-    def find_photo
-        @photo=Photo.find(params[:photo_id])
+    # def find_photo
+    #     @photo=Photo.find(params[:photo_id])
+    # end
+    def find_comment
+        @comment=Comment.find(params[:comment_id])
     end
 
     

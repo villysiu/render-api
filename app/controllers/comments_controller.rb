@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment= @photo.comments.create!(user_id: current_user.id, comment: params[:comment])
-    render json: {id: comment.id, user_id: current_user.id, comment: comment.comment}, status: :ok
+    @comment= @photo.comments.create!(user_id: current_user.id, comment: params[:comment])
+    @current_user = current_user
 
   end
 

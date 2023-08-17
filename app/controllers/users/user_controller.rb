@@ -1,17 +1,28 @@
 class Users::UserController < ApplicationController
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, :except => [:index, :show, :check_email]
 
   def index
-    @users=User.all
+    # @users=User.all
   end
 
   def curr_user
-      render json: current_user.id, status: :ok
+      render json: {id: current_user.id, login: current_user.login_time.to_i}, status: :ok
+  end
+
+  def check_email
+    
+    @user=User.find_by(email: user_params[:email])
+    
+    if @user
+      render json:{existed: 1} , status: :ok
+    else
+      render json:{existed: 0} , status: :ok
+    end
   end
 
   def update
     current_user.update(user_params)
-    render json: current_user.id, status: :ok
+    render json: current_user, except: :avatar, status: :ok
   end
 
   def show
@@ -21,7 +32,7 @@ class Users::UserController < ApplicationController
   private
   
   def user_params
-    params.permit(:name, :bio)
+    params.require(:user).permit(:name, :bio, :email)
   end
     
 end

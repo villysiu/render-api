@@ -4,9 +4,20 @@ class PhotosController < ApplicationController
     
     def index
         @photos = Photo.all.order("created_at DESC")
+
+        
     end
     def create
-        @photo = Photo.create!(photo_params)
+        puts photo_params
+        # @photo = Photo.create!(user_id: current_user.id, photo_params)
+        @photo = current_user.photos.create!(url: photo_params[:url])
+        comment = @photo.comments.create!(user_id: current_user.id, comment: photo_params[:desc])
+        puts comment.comment
+
+        @photo.update(comment_id: comment.id)
+        @current_user=current_user
+
+        puts @photo.comments.first
     end
 
     def update
@@ -23,7 +34,7 @@ class PhotosController < ApplicationController
     private
 
     def photo_params
-        params.permit(:user_id, :desc, :url)
+        params.permit(:desc, :url)
     end
     def find_photo
         puts params

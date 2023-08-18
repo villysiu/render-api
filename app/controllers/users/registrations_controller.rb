@@ -7,8 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     sign_in(resource_name, resource)
     resource.update(login_time: resource.current_sign_in_at)
-    render json: {id: resource.id, login: resource.login_time.to_i}, status: :ok
-
+    #render json: {id: resource.id, login: resource.login_time.to_i}, status: :ok
+    @current_user = resource
   end
 
 

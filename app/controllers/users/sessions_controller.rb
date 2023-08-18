@@ -6,7 +6,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def respond_with(resource, _opts = {})
     resource.update(login_time: resource.current_sign_in_at)
-    render json: {id: resource.id, login: resource.login_time.to_i}, status: :ok
+    @current_user = resource
+    # render json: {id: resource.id, login: resource.login_time.to_i}, status: :ok
   end
  
 

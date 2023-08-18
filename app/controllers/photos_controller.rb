@@ -12,12 +12,11 @@ class PhotosController < ApplicationController
         # @photo = Photo.create!(user_id: current_user.id, photo_params)
         @photo = current_user.photos.create!(url: photo_params[:url])
         comment = @photo.comments.create!(user_id: current_user.id, comment: photo_params[:desc])
-        puts comment.comment
 
         @photo.update(comment_id: comment.id)
         @current_user=current_user
 
-        puts @photo.comments.first
+        
     end
 
     def update

@@ -6,7 +6,6 @@ class Users::UserController < ApplicationController
   end
 
   def curr_user
-      # puts "HAHAHHAHAHAHAHAHAHHAHA"
      @current_user = current_user
       # render json: {id: current_user.id, 
       # avatar: rails_blob_path(current_user.avatar, only_path: true) if current_user.avatar.attached?,

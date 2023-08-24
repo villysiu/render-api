@@ -20,7 +20,9 @@ class PhotosController < ApplicationController
     end
 
     def update
-        @photo.update!(desc: params[:desc])
+        # @photo.update!(desc: params[:desc])
+        comment = Comment.find(@photo.comment_id)
+        comment.update!(comment: params[:desc])
         render json: nil, status: :ok
        
     end

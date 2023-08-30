@@ -9,4 +9,12 @@ class User < ApplicationRecord
          has_many :likes, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :notifications, dependent: :destroy
+        #  has_many :followers, dependent: :destroy
+
+         has_many :followers_association, :class_name => "Follower", dependent: :destroy
+          has_many :followers, :through => :followers_association, :source => :follower
+
+          has_many :inverse_followers_association, :class_name => "Follower", :foreign_key => "follower_id", dependent: :destroy
+          has_many :inverse_followers, :through => :inverse_followers_association, :source => :user
+
 end

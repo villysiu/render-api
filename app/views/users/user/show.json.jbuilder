@@ -3,3 +3,10 @@ json.avatar Rails.application.routes.url_helpers.rails_blob_path(@user.avatar, o
 json.name @user.name
 json.email @user.email
 json.bio @user.bio
+json.followers @user.followers.first
+json.followers @user.followers do |follower|
+    json.partial! 'users/user/user', user: follower
+end
+json.following @user.inverse_followers do |following|
+    json.partial! 'users/user/user', user: following
+end

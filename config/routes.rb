@@ -15,7 +15,9 @@ Rails.application.routes.draw do # get 'current_user/index'
   match '/comments/:comment_id/likes', to: "likes#create", via: 'post'
   match '/comments/:comment_id/likes', to: "likes#destroy", via: 'delete'
 
-  match '/follower', to: "followers#create", via: 'post'
+  match '/followers', to: "followers#create", via: 'post'
+  match '/followers', to: "followers#unfollow", via: 'delete'
+  match '/followers/remove', to: "followers#remove", via: 'delete'
   devise_for :users,
   path: '',
                path_names: {

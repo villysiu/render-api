@@ -14,7 +14,7 @@ class LikesController < ApplicationController
     def destroy
         @like=@comment.likes.find_by(user_id: current_user.id)
         @like.destroy
-        render json: {user_id: current_user.id}, status: :ok
+        render json: nil, status: :ok
     end
 
     private

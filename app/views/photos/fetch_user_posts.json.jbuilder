@@ -1,4 +1,4 @@
-json.posts @photos do |photo|
+json.array! @photos do |photo|
     
     json.id photo.id
     json.url Rails.application.routes.url_helpers.rails_blob_path(photo.url, only_path: true) if photo.url.attached?
@@ -19,4 +19,3 @@ json.posts @photos do |photo|
     end
         
 end
-json.len @len

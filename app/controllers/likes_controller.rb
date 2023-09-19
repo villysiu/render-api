@@ -8,7 +8,8 @@ class LikesController < ApplicationController
     def create
         @like= @comment.likes.create!(user_id: current_user.id)
         # render nil, status: :ok
-        render json: {user_id: current_user.id, user_name: current_user.name}, status: :ok
+        @current_user = current_user
+        # render json: {user_id: current_user.id, user_name: current_user.name}, status: :ok
     end
 
     def destroy

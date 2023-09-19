@@ -6,6 +6,5 @@ end
 json.comment comment.comment   
 json.created_at comment.created_at.to_i
 json.likes comment.likes do |like|
-    json.user_id like.user.id
-    json.user_name like.user.name
+    json.partial! 'users/user/user', user: like.user
 end
